@@ -10,7 +10,7 @@ Containerized [REST API](https://github.com/tarkov-database/rest-api) server for
 -  [jq](https://stedolan.github.io/jq/download/)
 -  cURL
 
-### Usage
+### Set up
 
 **1. Clone the repository**
 ```BASH
@@ -31,3 +31,18 @@ sh pod-setup.sh
 If everything worked, the API should now be accessible via http://localhost:9000
 
 **Enjoy! :-)**
+
+### Usage
+You can start the server with
+```BASH
+podman pod start rest-api
+```
+or stop with
+```BASH
+podman pod stop rest-api
+```
+
+To remove the server
+```BASH
+podman rm rest-api-server rest-api-mongo && podman pod rm rest-api
+```
