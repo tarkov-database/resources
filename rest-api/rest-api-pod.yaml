@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: rest-api
+  name: rest-api
+spec:
+  containers:
+  - name: rest-api-server
+    image: docker.pkg.github.com/tarkov-database/rest-api/rest-api:2.0.0-rc.0
+    env:
+    - name: JWT_AUDIENCE
+      value: localhost
+    - name: SERVER_PORT
+      value: "9000"
+    - name: JWT_KEY
+      value: FhLpkUvWbfVCb5Pp69qvBcTH
+    - name: MONGO_URI
+      value: mongodb://localhost:27017/rest-api
+    - name: MONGO_DB
+      value: rest-api
+    ports:
+    - containerPort: 9000
+      hostPort: 9000
+      protocol: TCP
+  - name: rest-api-mongo
+    image: docker.io/library/mongo:4.2
