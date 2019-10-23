@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Podman
 POD_NAME=rest-api
 CONTAINER_MONGO=rest-api-mongo
