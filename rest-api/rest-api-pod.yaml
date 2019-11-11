@@ -7,12 +7,14 @@ metadata:
 spec:
   containers:
   - name: rest-api-server
-    image: docker.pkg.github.com/tarkov-database/rest-api/rest-api:2.0.0
+    image: docker.pkg.github.com/tarkov-database/rest-api/rest-api:2.1.0
     env:
     - name: JWT_AUDIENCE
       value: localhost
     - name: SERVER_PORT
       value: "9000"
+    - name: JWT_ALG
+      value: HS256
     - name: JWT_KEY
       value: FhLpkUvWbfVCb5Pp69qvBcTH
     - name: MONGO_URI
