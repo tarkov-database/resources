@@ -4,8 +4,8 @@ set -e
 
 # Podman
 POD_NAME=rest-api
-CONTAINER_MONGO=rest-api-mongo
-CONTAINER_API=rest-api-server
+CONTAINER_MONGO=$POD_NAME-mongo
+CONTAINER_API=$POD_NAME-server
 
 # API
 API_PORT=9000
@@ -37,11 +37,7 @@ echo "Set setup API server..."
 
 podman play kube rest-api-pod.yaml
 
-podman pod stop $POD_NAME
-
 podman cp $MONGODUMP_FILE $CONTAINER_MONGO:/$MONGODUMP_FILE
-
-podman pod start $POD_NAME
 
 podman exec $CONTAINER_MONGO sh -c "exec mongorestore --gzip --archive=$MONGODUMP_FILE"
 
