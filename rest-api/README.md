@@ -49,5 +49,5 @@ podman pod stop rest-api
 
 To remove the server
 ```BASH
-podman podman pod rm rest-api
+podman pod rm rest-api
 ```
