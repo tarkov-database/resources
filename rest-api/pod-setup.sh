@@ -23,7 +23,7 @@ if ! [ -x "$(command -v podman)" ]; then
 fi
 
 if ! [ -x "$(command -v curl)" ]; then
-  echo "cAPI_URL is not installed!"
+  echo "curl is not installed!"
   exit 1
 fi
 
@@ -42,7 +42,8 @@ podman cp $MONGODUMP_FILE $CONTAINER_MONGO:/$MONGODUMP_FILE
 podman exec $CONTAINER_MONGO sh -c "exec mongorestore --gzip --archive=$MONGODUMP_FILE"
 
 # Verify pod
-echo "Check API server..."
+echo "
+Check API server..."
 
 API_TOKEN=$(curl -s -H "Authorization: Bearer $API_TOKEN" -H "Content-Type: $API_CONTENT_TYPE" "$API_URL/token" | jq -r '.token')
 ITEMS=$(curl -s -H "Authorization: Bearer $API_TOKEN" -H "Content-Type: $API_CONTENT_TYPE" "$API_URL/item" | jq -r '.total')
@@ -52,5 +53,6 @@ if ! (( $ITEMS > 0 )); then
   exit 1
 fi
 
-echo "Setup successful! The API is now accessible via $API_URL"
+echo "
+Setup successful! The API is now accessible via $API_URL"
 echo "Your API token: $API_TOKEN"
