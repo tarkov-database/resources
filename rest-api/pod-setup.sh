@@ -32,6 +32,8 @@ if ! [ -x "$(command -v jq)" ]; then
   exit 1
 fi
 
+podman login docker.pkg.github.com --get-login > /dev/null
+
 # Set up pod
 echo "Set setup API server..."
 
