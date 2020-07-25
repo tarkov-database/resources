@@ -26,10 +26,12 @@ cd resources/rest-api
 
 #### 3. Run the setup script
 
+[Make sure you are logged into GitHub's package registry](https://docs.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-docker-for-use-with-github-packages)
+*(The same Docker commands also work with Podman)*
+
 ```BASH
 sh pod-setup.sh
 ```
-*On most systems no root should be required!*
 
 If everything worked, the API should now be accessible via <http://localhost:9000>
 
