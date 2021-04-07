@@ -7,7 +7,7 @@ metadata:
 spec:
   containers:
   - name: server
-    image: docker.pkg.github.com/tarkov-database/rest-api/rest-api:2.8.1
+    image: ghcr.io/tarkov-database/rest-api:2.14.1
     env:
     - name: JWT_AUDIENCE
       value: localhost
@@ -28,4 +28,4 @@ spec:
       hostPort: 9000
       protocol: TCP
   - name: mongo
-    image: docker.io/library/mongo:4.2
+    image: docker.io/library/mongo:4.4

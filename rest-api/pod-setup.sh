@@ -32,8 +32,6 @@ if ! [ -x "$(command -v jq)" ]; then
   exit 1
 fi
 
-podman login docker.pkg.github.com --get-login > /dev/null
-
 # Set up pod
 echo "Set setup API server..."
 
@@ -48,9 +46,9 @@ echo "
 Check API server..."
 
 API_TOKEN=$(curl -s -H "Authorization: Bearer $API_TOKEN" -H "Content-Type: $API_CONTENT_TYPE" "$API_URL/token" | jq -r '.token')
-ITEMS=$(curl -s -H "Authorization: Bearer $API_TOKEN" -H "Content-Type: $API_CONTENT_TYPE" "$API_URL/item" | jq -r '.total')
+OK=$(curl -s -H "Authorization: Bearer $API_TOKEN" -H "Content-Type: $API_CONTENT_TYPE" "$API_URL/health" | jq -r '.ok')
 
-if ! (( $ITEMS > 0 )); then
+if ! [ "$OK" = "true" ]; then
   echo "Oh oh, something went wrong! :-("
   exit 1
 fi

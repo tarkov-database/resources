@@ -6,7 +6,7 @@ Containerized [REST API](https://github.com/tarkov-database/rest-api) server for
 
 ### Prerequisites
 
-- [Podman](https://podman.io/getting-started/installation) (v2)
+- [Podman](https://podman.io/getting-started/installation) (>=v2)
 - [jq](https://stedolan.github.io/jq/download/)
 - cURL
 
@@ -15,19 +15,10 @@ Containerized [REST API](https://github.com/tarkov-database/rest-api) server for
 #### 1. Clone the repository
 
 ```BASH
-git clone git@github.com:tarkov-database/resources.git
+git clone git@github.com:tarkov-database/resources.git && cd resources/rest-api
 ```
 
-#### 2. Change to this directory
-
-```BASH
-cd resources/rest-api
-```
-
-#### 3. Run the setup script
-
-[Make sure you are logged into GitHub's package registry](https://docs.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-docker-for-use-with-github-packages)
-*(The same Docker commands also work with Podman)*
+#### 2. Run the setup script
 
 ```BASH
 sh pod-setup.sh
